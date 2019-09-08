@@ -39,16 +39,14 @@ class FinancialAnalyzer:
     
     def GetMonthWithMaximumResult(self):
         _monthWithMaximumProfit={'Month':'','MaxValue':0}
-        _monthWithMaximumProfit['Value']=max(self.monthly_result_change)
-        _month=self.monthly_result_change.index(_monthWithMaximumProfit['Value'])+1
-        _monthWithMaximumProfit['Month']=self.months[_month]
+        _monthWithMaximumProfit['MaxValue']=max(self.monthly_result_change)
+        _monthWithMaximumProfit['Month']=self.monthly_result_change.index(_monthWithMaximumProfit['MaxValue'])+1
         return _monthWithMaximumProfit
 
     def GetMonthWithMinimumResult(self):
         _monthWithMinimumProfit={'Month':'','MinValue':0}
-        _monthWithMinimumProfit['Value']=min(self.monthly_result_change)
-        _month=self.monthly_result_change.index(_monthWithMinimumProfit['Value'])+1
-        _monthWithMinimumProfit['Month']=self.months[_month]
+        _monthWithMinimumProfit['MinValue']=max(self.monthly_result_change)
+        _monthWithMinimumProfit['Month']=self.monthly_result_change.index(_monthWithMinimumProfit['MinValue'])+1
         return _monthWithMinimumProfit
 
     def WriteResultsToTextFile(self,results):
@@ -61,7 +59,7 @@ class FinancialAnalyzer:
             textFile.write("\n")
             textFile.write(f"Total: ${results['Total_Amount']}")
             textFile.write("\n")
-            textFile.write(f"Average Change: ${results['Average_Change']}")
+            textFile.write(f"Average Change: {results['Average_Change']}")
             textFile.write("\n")
             textFile.write(f"Greatest Increase in Profits: {results['Max_Month']} (${(str(results['Max_Value']))})")
             textFile.write("\n")
